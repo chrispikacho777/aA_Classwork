@@ -1,4 +1,4 @@
-require './'
+require "./../PolyTreeNode/lib/00_tree_node.rb"
 
 class KnightPathFinder
 
@@ -23,8 +23,22 @@ class KnightPathFinder
     
     def new_move_positions(pos)
         all_moves = KnightPathFinder.valid_moves(pos)
-        new_move = all_moves.select{|move| !considered_positions.include?(move)}
+        new_move = all_moves.select{|move| !@considered_positions.include?(move)}
         @considered_positions += new_move
         new_move
+    end
+
+    def build_move_tree
+        queue = [@path]
+
+        (0...queue.length).each do |idx|
+            self.new_move_positions(queue[idx]).each do |new_move|
+                queue << @path.add_child(PolyTreeNode.new(new_move))
+            end
+        end
+
+        # until self.new_move_positions(@root_node.each).empty?
+        #     queue += self.new_move_positions(@root_node)
+        # end
     end
 end    
