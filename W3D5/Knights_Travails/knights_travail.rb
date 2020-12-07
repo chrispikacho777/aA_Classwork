@@ -22,6 +22,8 @@ class KnightPathFinder
         @pos = pos
         @root_node = PolyTreeNode.new(@pos)
         @considered_positions = [pos] 
+
+        build_move_tree
     end
     
     def new_move_positions(pos)
