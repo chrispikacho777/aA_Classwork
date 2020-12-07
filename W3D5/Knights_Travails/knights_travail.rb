@@ -1,9 +1,12 @@
 require "./../PolyTreeNode/lib/00_tree_node.rb"
+require "byebug"
+
 
 class KnightPathFinder
 
     MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [1,-2], [-1,2], [-1,-2]]
 
+    attr_reader :root_node, :paths
     def self.valid_moves(pos)
         x, y = pos
         valid_pos = []
@@ -23,22 +26,24 @@ class KnightPathFinder
     
     def new_move_positions(pos)
         all_moves = KnightPathFinder.valid_moves(pos)
-        new_move = all_moves.select{|move| !@considered_positions.include?(move)}
-        @considered_positions += new_move
-        new_move
+        new_moves = all_moves.select{|move| !@considered_positions.include?(move)}
+        @considered_positions += new_moves
+        new_moves
     end
 
     def build_move_tree
-        queue = [@path]
+        queue = [@paths]
 
-        (0...queue.length).each do |idx|
-            self.new_move_positions(queue[idx]).each do |new_move|
-                queue << @path.add_child(PolyTreeNode.new(new_move))
-            end
+        until queue.empty?
+            self.new_move_positions(queue.first.value).each do |new_move|
+                queue.first.add_child(PolyTreeNode.new(new_move))
+                queue << PolyTreeNode.new(new_move)
+            end 
+            queue.shift 
         end
-
         # until self.new_move_positions(@root_node.each).empty?
         #     queue += self.new_move_positions(@root_node)
         # end
     end
 end    
+
