@@ -6,7 +6,7 @@ class KnightPathFinder
 
     MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [1,-2], [-1,2], [-1,-2]]
 
-    attr_reader :root_node, :paths
+    attr_reader :root_node, :pos, :considered_positions
     def self.valid_moves(pos)
         x, y = pos
         valid_pos = []
@@ -19,8 +19,8 @@ class KnightPathFinder
     end
 
     def initialize(pos)
-        @root_node = pos
-        @paths = PolyTreeNode.new(@root_node)
+        @pos = pos
+        @root_node = PolyTreeNode.new(@pos)
         @considered_positions = [pos] 
     end
     
@@ -32,18 +32,39 @@ class KnightPathFinder
     end
 
     def build_move_tree
-        queue = [@paths]
+        queue = [@root_node] ## starts with the root node
 
         until queue.empty?
-            self.new_move_positions(queue.first.value).each do |new_move|
-                queue.first.add_child(PolyTreeNode.new(new_move))
-                queue << PolyTreeNode.new(new_move)
+            current_node = queue.shift
+            self.new_move_positions(current_node.value).each do |new_move| ##calling new_moves on the instance game on the first root to start listing next possible moves
+                child = PolyTreeNode.new(new_move)
+                current_node.add_child(child)
+                queue << child
             end 
-            queue.shift 
         end
         # until self.new_move_positions(@root_node.each).empty?
         #     queue += self.new_move_positions(@root_node)
         # end
     end
+
+    def find_path(end_pos)
+        end_node = self.root_node.bfs(end_pos)
+        trace_path_back(end_node)
+    end
+
+    def trace_path_back(node)
+        solution = []
+        until node.nil?
+            solution << node.value
+            node = node.parent
+        end
+        solution.reverse
+    end
+
 end    
+
+kpf = KnightPathFinder.new([0, 0])
+p kpf.root_node.dfs([6,2])
+# p kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
+#p kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
 
