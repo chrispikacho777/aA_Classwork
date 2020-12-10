@@ -48,3 +48,5 @@ def stock_picker(array)
     raise StandardError if array.index(max_profit[0]) > array.index(max_profit[1])
     max_profit
 end
+
+test = "test"
