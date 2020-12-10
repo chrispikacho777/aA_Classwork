@@ -49,4 +49,22 @@ def stock_picker(array)
     max_profit
 end
 
-test = "test"
+class TowerOfHanoi
+    
+    attr_accessor :t1, :t2, :t3
+
+    def initialize
+        @t1 = [1,2,3,4,5]
+        @t2 = []
+        @t3 = []
+    end
+
+    def move(start_t, end_t)
+        raise StandardError.new('Starting Tower Empty') if start_t.empty?
+        raise StandardError.new('Can not place bigger ring on smaller ring') if !end_t.empty? && start_t[0] > end_t[0]
+        end_t.unshift(start_t.shift)
+        
+    end
+
+
+end
