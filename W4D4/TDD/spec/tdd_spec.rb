@@ -21,4 +21,12 @@ describe '#my_transpose' do
     end
 
 end
+
+describe '#stock_picker' do 
+    it 'returns the pair of days where you would see most profit' do 
+        expect(stock_picker([5,7,4,10,15])).to eq([4, 15])
+    end
+end
+
+
     

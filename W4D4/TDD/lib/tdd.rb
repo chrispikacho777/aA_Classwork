@@ -20,3 +20,31 @@ class Array
     end
 
 end
+
+
+def my_transpose(array)
+    trans_arr = []
+    (0...array.length).each do |idx1|
+        temp_arr = []
+        (0...array.length).each do |idx2|
+            temp_arr << array[idx2][idx1]
+        end
+        trans_arr << temp_arr
+    end
+    trans_arr
+end
+
+def stock_picker(array)
+    profit = 0
+    max_profit = []
+    (0...array.length - 1).each do |buy|
+        ((buy + 1)...array.length).each do |sell|
+            if (array[sell] - array[buy]) > profit 
+                max_profit = [array[buy], array[sell]]
+                profit = array[sell] - array[buy]
+            end
+        end
+    end
+    raise StandardError if array.index(max_profit[0]) > array.index(max_profit[1])
+    max_profit
+end
