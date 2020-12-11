@@ -59,16 +59,8 @@ end
 
 
 
-<<<<<<< HEAD
 # list = [5, 3, -7]
 # # p sub_sum_1(list)
 # p sub_sum(list)
 
 
-=======
-list = [5, 3, -7, 11]
-list1 = [2,3,-6,7,-6,7]
-# p sub_sum_1(list)
-p sub_sum(list)
-p sub_sum(list1)
->>>>>>> 5e9021b21c21ea2b3b938c0a27b858ec1be971e1
