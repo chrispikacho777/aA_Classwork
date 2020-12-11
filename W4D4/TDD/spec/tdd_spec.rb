@@ -53,6 +53,19 @@ describe TowerOfHanoi do
         end
        
     end
+
+    describe '#won?' do
+
+        it 'will return true if all rings are in tower 3 in order' do
+            tower.t3 = [1,2,3,4,5]
+            tower.t1 = []
+            expect(tower.won?).to eq(true)
+        end
+
+        it 'will return false if not all rings in order in tower 3' do 
+            expect(tower.won?).to eq(false)
+        end
+    end
 end
 
     

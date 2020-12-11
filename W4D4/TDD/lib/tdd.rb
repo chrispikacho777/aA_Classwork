@@ -66,5 +66,8 @@ class TowerOfHanoi
         
     end
 
-
+    def won?
+        return false if @t3.length != 5
+        true
+    end
 end
