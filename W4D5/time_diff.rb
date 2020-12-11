@@ -1,5 +1,4 @@
 def my_min_1(list) #time complexity is O(N^2)
-    # min = list[0]
     (0...list.length - 1).each do |i|
         count = 0
         (i+1...list.length).each do |j|
@@ -20,7 +19,9 @@ def my_min(list) #time complexity for this is O(N)
 end
 
 # list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+# list_1 = [1, 10, -3, 8, 100, -100, 0]
 # p my_min_1(list) 
+# p my_min_1(list_1) 
 
 
 def sub_sum_1(list) # time complexity is O(n^2)
@@ -52,6 +53,8 @@ end
 
 
 
-list = [5, 3, -7]
-# p sub_sum_1(list)
-p sub_sum(list)
+# list = [5, 3, -7]
+# # p sub_sum_1(list)
+# p sub_sum(list)
+
+
