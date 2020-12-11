@@ -59,6 +59,20 @@ class TowerOfHanoi
         @t3 = []
     end
 
+    def play
+        until won?
+            render
+            puts 'Input starting tower (t1, t2, t3)'
+            start_p = gets.chomp
+            puts "Input ending tower (t1, t2, t3)"
+            end_p = gets.chomp
+            hash = {'t1' => @t1, 't2' => @t2, 't3' => @t3}
+            move(hash[start_p], hash[end_p])
+        end
+        render
+        puts 'You won!'
+    end
+
     def move(start_t, end_t)
         raise StandardError.new('Starting Tower Empty') if start_t.empty?
         raise StandardError.new('Can not place bigger ring on smaller ring') if !end_t.empty? && start_t[0] > end_t[0]
@@ -70,4 +84,14 @@ class TowerOfHanoi
         return false if @t3.length != 5
         true
     end
+
+    def render
+        p 't1: ' + @t1.join(' ')
+        p 't2: ' + @t2.join(' ')
+        p 't3: ' + @t3.join(' ')
+    end
+
 end
+
+# tower = TowerOfHanoi.new
+# tower.play
