@@ -8,7 +8,7 @@ def bad_two_sum?(arr, target) # O(n^2)
     false
 end
 
-def okay_two_sum?(arr, target) O(nlogn)
+def okay_two_sum?(arr, target) #(nlogn)
     sorted = arr.sort 
     (0...arr.length).each do |i|
         difference = target - arr[i]
@@ -35,6 +35,21 @@ def bsearch(arr, target)
     nil
 end
 
+
+# arr = [0, 1, 5, 7]
+# p okay_two_sum?(arr, 6) 
+# p okay_two_sum?(arr, 10)
+
+def two_sum?(arr, target) # O(n)
+    hash = Hash.new(0)
+    arr.each { |num| hash[num] += 1}
+    arr.each do |num|
+        diff = target - num
+        hash[num] -= 1
+        return true if hash[diff] > 0
+    end
+
+end
 
 arr = [0, 1, 5, 7]
 p okay_two_sum?(arr, 6) 
