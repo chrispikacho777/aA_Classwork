@@ -23,7 +23,7 @@ end
 # p my_min_1(list) 
 
 
-def sub_sum_1(list) # time complexity is O(n^2)
+def sub_sum_1(list) # time complexity is O(n^3)
     sub_arr = []
     (0...list.length - 1).each do |i|
         (i...list.length).each do |j|
@@ -42,7 +42,13 @@ def sub_sum(list) # time complexity is O(n)
         if current_sum >= largest_sum
             largest_sum = current_sum
         else
-            current_sum = num
+            #current_sum is smaller than largest_sum
+            #we need to reset current_sum based on if it is negative or positive
+            #if negative we will reset to 0
+            #if positive, keep the current_sum as is
+            if current_sum < 0
+                current_sum = 0
+            end
         end
     end
     largest_sum
@@ -52,6 +58,8 @@ end
 
 
 
-list = [5, 3, -7]
+list = [5, 3, -7, 11]
+list1 = [2,3,-6,7,-6,7]
 # p sub_sum_1(list)
 p sub_sum(list)
+p sub_sum(list1)
