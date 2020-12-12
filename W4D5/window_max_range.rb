@@ -78,15 +78,24 @@ class StackQueue
     end
 
     def size
-        @stack_2.length
+        @stack_2.length + @stack_1.length
     end
 
     def empty?
-        @stack_2.empty?
+        @stack_2.empty? && @stack_1.empty?
     end
 
-    def enqueue
-    
+    def enqueue(input)
+        @stack_1.push(input)
+    end
+
+    def dequeue(input)
+        if @stack_2.empty?
+            @stack_2.push(@stack_1.pop) until @stack_1.empty?
+        end
+        @stack_2.pop
+    end
+
 end
 
 
