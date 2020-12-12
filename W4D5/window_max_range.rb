@@ -47,5 +47,48 @@ class MyStack
     def initialize
       @store = []
     end
+
+    def peek
+        @store.last
+    end
+
+    def size
+        @store.length
+    end
+
+    def empty?
+        @store.empty?
+    end
+
+    def pop
+        @store.pop
+    end
+
+    def push(input)
+        @store.push(input)
+    end
 end
+
+
+class StackQueue
+
+    def initialize
+        @stack_1 = MyStack.new
+        @stack_2 = MyStack.new
+    end
+
+    def size
+        @stack_2.length
+    end
+
+    def empty?
+        @stack_2.empty?
+    end
+
+    def enqueue
+    
+end
+
+
+
 
