@@ -39,7 +39,8 @@ class IntSet
   end
 
   def remove(num)
-    
+    bucket = num % 20
+    @store[bucket].delete(num)
   end
 
   def include?(num)
@@ -67,12 +68,23 @@ class ResizingIntSet
   end
 
   def insert(num)
+    bucket = num % @store.length
+    unless include?(num)
+      @store[bucket] << num 
+      @count += 1
+    end
   end
 
   def remove(num)
+    bucket = num % @store.length
+    if include?(num)
+      @store[bucket].delete(num) 
+      @count -= 1
+    end
   end
 
   def include?(num)
+    @store[num % @store.length].include?(num)
   end
 
   private
@@ -86,5 +98,9 @@ class ResizingIntSet
   end
 
   def resize!
+    return unless @count > @store.length
+    new_arr = Array.new(@store.length*2) {Array.new}
+    @store.flatten.each {|el| new_arr[el % new_arr.length] << el }
+    @store = new_arr
   end
 end
