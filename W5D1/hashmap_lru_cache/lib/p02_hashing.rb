@@ -4,11 +4,20 @@ end
 
 class Array
   def hash
+    return nil.hash if self.empty?
+    hash_num = 0
+    self.each_with_index { |ele, idx| hash_num += (ele * idx).hash }
+    hash_num
   end
 end
 
 class String
   def hash
+    return nil.hash if self.empty?
+    alphabet = ("a".."z").to_a
+    hash_sum = 0
+    self.each_char.with_index { |char, i| hash_sum += (alphabet.index(char.downcase) * i).hash }
+    hash_sum
   end
 end
 

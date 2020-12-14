@@ -73,6 +73,7 @@ class ResizingIntSet
       @store[bucket] << num 
       @count += 1
     end
+    resize! if @count > num_buckets
   end
 
   def remove(num)
@@ -98,9 +99,10 @@ class ResizingIntSet
   end
 
   def resize!
-    return unless @count > @store.length
-    new_arr = Array.new(@store.length*2) {Array.new}
-    @store.flatten.each {|el| new_arr[el % new_arr.length] << el }
-    @store = new_arr
+    # return unless @count > @store.length
+    previous_array = @store
+    @store = Array.new(num_buckets*2) { Array.new }
+    @count = 0
+    previous_array.flatten.each {|el| insert(el) }
   end
 end
