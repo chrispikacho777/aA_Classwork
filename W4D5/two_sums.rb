@@ -46,11 +46,13 @@ def two_sum?(arr, target) # O(n)
     arr.each do |num|
         diff = target - num
         hash[num] -= 1
-        return true if hash[diff] > 0
+        if hash[diff] > 0
+            return [num, diff]
+        end
     end
-
+    nil
 end
 
 arr = [0, 1, 5, 7]
-p okay_two_sum?(arr, 6) 
-p okay_two_sum?(arr, 10)
+p two_sum?(arr, 6) 
+p two_sum?(arr, 10)
