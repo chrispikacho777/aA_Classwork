@@ -77,7 +77,6 @@ class LinkedList
     each {|el| node = el if el.key == key}
     node.prev.next = node.next
     node.next.prev = node.prev
-
   end
 
   def each(&prc)
