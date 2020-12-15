@@ -30,7 +30,7 @@ class LinkedList
   end
 
   def [](i)
-    each_with_index { |link, j| return link if i == j }
+    each_with_index { |link,j| return link if i == j }
     nil
   end
 
@@ -47,9 +47,14 @@ class LinkedList
   end
 
   def get(key)
+    self.each {|el| return el.val if el.key == key}
+    return nil
   end
 
   def include?(key)
+    node = nil
+    each {|el| node = el if el.key == key}
+    !node.nil?
   end
 
   def append(key, val)
@@ -61,12 +66,18 @@ class LinkedList
   end
 
   def update(key, val)
-    node = self[key]
+    node = nil
+    each {|el| node = el if el.key == key}
     return if node == nil
     node.val = val
   end
 
   def remove(key)
+    node = nil
+    each {|el| node = el if el.key == key}
+    node.prev.next = node.next
+    node.next.prev = node.prev
+
   end
 
   def each(&prc)
@@ -78,7 +89,7 @@ class LinkedList
   end
 
   # uncomment when you have `each` working and `Enumerable` included
-  # def to_s
-  #   inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
-  # end
+  def to_s
+    inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
+  end
 end
