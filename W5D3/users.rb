@@ -1,3 +1,4 @@
+require_relative 'question_database'
 class Users  
     attr_accessor :f_name, :l_name
 
@@ -17,7 +18,7 @@ class Users
                 id = ?;
         SQL
         return nil if data.length < 1
-        Users.new(data)
+        Users.new(data.first)
     end
 
 end

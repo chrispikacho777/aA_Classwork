@@ -1,3 +1,4 @@
+require_relative 'question_database'
 class QuestionFollows  
     attr_accessor :users_id, :questions_id
 
@@ -17,7 +18,7 @@ class QuestionFollows
                 id = ?;
         SQL
         return nil if data.length < 1
-        QuestionFollows.new(data)
+        QuestionFollows.new(data.first)
     end
 
 end
