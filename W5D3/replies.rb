@@ -93,4 +93,19 @@ class Replies
         return nil if data.length < 1
         data.first.values.join("")
     end
+
+    def child_reply
+        data = QuestionDBConnection.instance.execute(<<-SQL, @id)
+            SELECT
+                body
+            FROM    
+                replies
+            WHERE
+                reply_id = ?
+        SQL
+        return nil if data.length < 1
+        data.first.values.join("")
+    end
+    
+    
 end
