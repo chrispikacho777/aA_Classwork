@@ -1,4 +1,5 @@
 require_relative 'questions_database'
+require_relative 'replies'
 require 'byebug'
 
 class Questions  
@@ -57,5 +58,9 @@ class Questions
         SQL
         return nil if data.length < 1
         data.first.values.join(" ")
+    end
+
+    def replies
+        Replies.find_by_questions_id(@id)
     end
 end

@@ -1,4 +1,5 @@
-require_relative 'questions_database'
+require_relative 'replies'
+
 class Users  
     attr_accessor :f_name, :l_name
 
@@ -34,4 +35,13 @@ class Users
         return nil if data.length < 1
         Users.new(data.first)
     end
+
+    def authored_questions
+        Questions.find_by_author_id(@id)
+    end
+
+    def authored_replies
+        Replies.find_by_user_id(@id)
+    end
+
 end

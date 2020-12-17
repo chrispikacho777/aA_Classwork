@@ -1,4 +1,6 @@
-require_relative 'questions_database'
+require_relative 'questions'
+
+
 class Replies  
     attr_accessor :users_id, :questions_id, :reply_id, :body
 
@@ -47,5 +49,48 @@ class Replies
         SQL
         return nil if data.length < 1
         Replies.new(data.first)
+    end
+   
+    def author 
+        data = QuestionDBConnection.instance.execute(<<-SQL, @users_id)
+            SELECT
+                f_name, l_name
+            FROM    
+                users
+            JOIN replies
+                ON replies.users_id = users.id
+            WHERE
+                users_id = ?
+        SQL
+        return nil if data.length < 1
+        data.first.values.join(" ")
+    end
+
+    def question
+        data = QuestionDBConnection.instance.execute(<<-SQL, @questions_id)
+            SELECT
+                questions.body
+            FROM    
+                questions
+            JOIN replies
+                ON replies.questions_id = questions.id
+            WHERE
+                questions_id = ?
+        SQL
+        return nil if data.length < 1
+        data.first.values.join("")
+    end
+
+    def parent_reply
+            data = QuestionDBConnection.instance.execute(<<-SQL, @reply_id)
+            SELECT
+                body
+            FROM    
+                replies
+            WHERE
+                id = ?
+        SQL
+        return nil if data.length < 1
+        data.first.values.join("")
     end
 end
