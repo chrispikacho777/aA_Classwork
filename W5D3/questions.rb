@@ -30,4 +30,32 @@ class Questions
         Questions.new(data.first)
     end
 
+    def self.find_by_author_id(author_id)
+        data = QuestionDBConnection.instance.execute(<<-SQL, author_id)
+            SELECT
+                *
+            FROM    
+                questions
+            WHERE
+                author_id = ?
+        SQL
+        return nil if data.length < 1
+        p data
+        Questions.new(data.first)
+    end
+
+    def author 
+        data = QuestionDBConnection.instance.execute(<<-SQL, @author_id)
+            SELECT
+                f_name, l_name
+            FROM    
+                users
+            JOIN questions
+                ON questions.author_id = users.id
+            WHERE
+                author_id = ?
+        SQL
+        return nil if data.length < 1
+        data.first.values.join(" ")
+    end
 end

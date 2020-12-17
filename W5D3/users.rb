@@ -1,4 +1,4 @@
-require_relative 'question_database'
+require_relative 'questions_database'
 class Users  
     attr_accessor :f_name, :l_name
 
@@ -21,4 +21,17 @@ class Users
         Users.new(data.first)
     end
 
+    def self.find_by_name(first, last)
+        data = QuestionDBConnection.instance.execute(<<-SQL, first, last)
+            SELECT
+                *
+            FROM    
+                users
+            WHERE
+                f_name = ? and
+                l_name = ?;
+        SQL
+        return nil if data.length < 1
+        Users.new(data.first)
+    end
 end

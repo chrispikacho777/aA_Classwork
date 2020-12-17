@@ -1,4 +1,4 @@
-require_relative 'question_database'
+require_relative 'questions_database'
 class Replies  
     attr_accessor :users_id, :questions_id, :reply_id, :body
 
@@ -23,4 +23,29 @@ class Replies
         Replies.new(data.first)
     end
 
+    def self.find_by_user_id(id)
+        data = QuestionDBConnection.instance.execute(<<-SQL, id)
+            SELECT
+                *
+            FROM    
+                replies
+            WHERE
+                users_id = ?;
+        SQL
+        return nil if data.length < 1
+        Replies.new(data.first)
+    end
+
+    def self.find_by_questions_id(id)
+        data = QuestionDBConnection.instance.execute(<<-SQL, id)
+            SELECT
+                *
+            FROM    
+                replies
+            WHERE
+                questions_id = ?;
+        SQL
+        return nil if data.length < 1
+        Replies.new(data.first)
+    end
 end
