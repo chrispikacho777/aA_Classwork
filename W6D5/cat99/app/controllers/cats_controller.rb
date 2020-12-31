@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   def index
-    @cat = Cat.all
+    @cats = Cat.all
 
     render :index 
   end
