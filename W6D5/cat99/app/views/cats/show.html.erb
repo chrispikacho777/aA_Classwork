@@ -1,4 +1,4 @@
-<h1>All Cats</h1>
+<h1><%= @cat.name %></h1>
 
 <table>
     <thead>
@@ -8,22 +8,18 @@
         </tr>
     </thead>
     <tbody>
-        <% ['name', 'birth_date', 'color', 'sex', 'description'].each do |attr| %>
+        <tr>
+            <td><%= 'age' %></td>
+            <td><%=@cat.age%></td>
+        </tr>
+        <% ['birth_date', 'color', 'sex'].each do |attr| %>
         <tr>
             <td><%= attr %></td>
             <td><%=@cat[attr]%></td>
         </tr>
         <% end %>
+
     </tbody>
 </table>
 
-
-
-<ul>
-    <li> <%= @cat.name %></li>
-    <li> <%= @cat.birth_date %></li>
-    <li> <%= @cat.color %></li>
-    <li> <%= @cat.sex %></li>
-    <li> <%= @cat.description %></li>
-</ul>
 
