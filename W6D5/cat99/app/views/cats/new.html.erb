@@ -5,15 +5,41 @@
     <input type = "text" name = "cat[name]" value = "<%= @cat.name %>">
     </label>
 
-    <label> Color </label>
+    <br>
 
-    <label> Birth_date </label>
+    <label> Color </label>
+    <select name="cat[color]">
+        <option disabled selected>--Selected Color--</option>
+        <% Cat::COLORS.each do |color| %>
+        <option value="<%= color %>"><%= color %></option>
+        <% end %>
+    </select>
+
+    <br>
+
+    <label> Birth_date
+         <input type = "date" name = "cat[birth_date]" value = "<%= @cat.birth_date %>">
+     </label>
+
+     <br>
 
     <label> Sex 
-     <input type = "radio" name = "cat[sex]" value = "<%= @cat.sex %>">
+        <label>M
+             <input type = "radio" name = "cat[sex]" value = "M">
+        </label>
+        <label>F
+             <input type = "radio" name = "cat[sex]" value = "F">
+        </label>
     </label>
+
+     <br>
     
     <label> Description </label>
+    <textarea name="cat[description]"><%= @cat.description %></textarea>
     
+    <br>
+    <br>
+
+    <input type="submit" value="Create cat">
 
 </form>

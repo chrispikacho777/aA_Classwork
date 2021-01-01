@@ -16,5 +16,9 @@ class CatsController < ApplicationController
 
     render :new 
   end
+
+  def edit 
+    
+  end
   
 end
