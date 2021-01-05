@@ -9,3 +9,12 @@
 
     <input type="submit" value="Delete Album">
 </form>
+
+
+<ul>
+    <% @album.tracks.each do |track| %>
+        <a href=<%= track_url(track) %>><%= track.title %></a>
+    <% end %>
+</ul>
+
+<a href=<%= new_album_track_url(@album) %>>Add Track</a>

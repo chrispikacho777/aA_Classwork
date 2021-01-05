@@ -8,12 +8,14 @@
   <label>Year
     <input type="text" name="album[year]" value=<%= @album.year %>>
   </label>
+  
   <label>Live
     <input type="radio" name="album[is_live]" value="true" <%= @album.is_live == true ? "checked" : "" %>>
   </label>
   <label>Studio
     <input type="radio" name="album[is_live]" value="false" <%= !@album.is_live == false ? "checked" : "" %>>
   </label>
+
   <label>Band
     <select name="album[band_id]">
       <% Band.all.each do |band| %>
@@ -21,5 +23,6 @@
       <% end %>
     </select>
   </label>
+
   <input type="submit" value="Submit">
 </form>
