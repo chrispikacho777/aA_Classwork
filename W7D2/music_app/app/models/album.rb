@@ -13,9 +13,11 @@
 class Album < ApplicationRecord
   validates :title, :year, :is_live, :band_id, presence: true
   validates :title, uniqueness: {scope: :band_id}
+  validates :is_live, inclusion: [true, false]
 
   belongs_to :band
-
+  has_many :tracks,
+    dependent: :destroy
   
 
 end
