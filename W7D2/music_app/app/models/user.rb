@@ -44,9 +44,4 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64
     end
-
-    private
-    def user_params
-        params.require(:user).permit(:email, :password)
-    end
 end
