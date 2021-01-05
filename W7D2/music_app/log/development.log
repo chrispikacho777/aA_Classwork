@@ -923,3 +923,153 @@ Migrating to CreateBands (20210105195430)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/session/new" for ::1 at 2021-01-05 12:12:21 -0800
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chrischo/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+Started GET "/band/new" for ::1 at 2021-01-05 12:12:27 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chrischo/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/524bb71b4a265065/variables" for ::1 at 2021-01-05 12:12:27 -0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateBands (20210105195430)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "bands" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210105195430_create_bands.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_bands_on_name" ON "bands"  ("name")[0m
+  ↳ db/migrate/20210105195430_create_bands.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210105195430"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4505726345591715405)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/band/new" for ::1 at 2021-01-05 12:12:54 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chrischo/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/band/new"):
+  
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/bands/new" for ::1 at 2021-01-05 12:13:07 -0800
+Processing by BandsController#new as HTML
+  Rendering bands/new.html.erb within layouts/application
+  Rendered bands/new.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 216ms (Views: 201.5ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/bands" for ::1 at 2021-01-05 12:13:26 -0800
+Processing by BandsController#create as HTML
+  Parameters: {"authenticity_token"=>"EW4DqPT41fsoC2qGmAlHKXGEVTK5JYdMLu1c3W8cZanau4m+eHgA7Jy+DoAmJ2uiMFsPTQ5S6ZBzKgURBxsgHQ==", "band"=>{"name"=>"Rubber Band"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:20
+  [1m[36mBand Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "bands" WHERE "bands"."name" = $1 LIMIT $2[0m  [["name", "Rubber Band"], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:20
+  [1m[36mBand Create (1.0ms)[0m  [1m[32mINSERT INTO "bands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Rubber Band"], ["created_at", "2021-01-05 20:13:26.809692"], ["updated_at", "2021-01-05 20:13:26.809692"]]
+  ↳ app/controllers/bands_controller.rb:20
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:20
+Redirected to http://localhost:3000/bands/1
+Completed 302 Found in 6ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/bands/1" for ::1 at 2021-01-05 12:13:26 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:9
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 26ms (Views: 22.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bands/1/edit" for ::1 at 2021-01-05 12:13:42 -0800
+Processing by BandsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.4ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:29
+  Rendering bands/edit.html.erb within layouts/application
+  Rendered bands/edit.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/bands/1" for ::1 at 2021-01-05 12:13:55 -0800
+Processing by BandsController#update as HTML
+  Parameters: {"authenticity_token"=>"0KIYAnFgLjLbv8peKaIA0I+pC1b/0IokO91j4ixpHq0bd5IU/eD7JW8KrliXjCxbznZRKUin5PhmGjouRG5bGQ==", "band"=>{"name"=>"Blubber Band"}, "id"=>"1"}
+  [1m[36mBand Load (0.5ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bands_controller.rb:35
+  [1m[36mBand Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "bands" WHERE "bands"."name" = $1 AND "bands"."id" != $2 LIMIT $3[0m  [["name", "Blubber Band"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:35
+  [1m[36mBand Update (0.7ms)[0m  [1m[33mUPDATE "bands" SET "name" = $1, "updated_at" = $2 WHERE "bands"."id" = $3[0m  [["name", "Blubber Band"], ["updated_at", "2021-01-05 20:13:55.498504"], ["id", 1]]
+  ↳ app/controllers/bands_controller.rb:35
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bands_controller.rb:35
+Redirected to http://localhost:3000/bands/1
+Completed 302 Found in 8ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/bands/1" for ::1 at 2021-01-05 12:13:55 -0800
+Processing by BandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBand Load (0.3ms)[0m  [1m[34mSELECT  "bands".* FROM "bands" WHERE "bands"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bands_controller.rb:9
+  Rendering bands/show.html.erb within layouts/application
+  Rendered bands/show.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.6ms)
+
+
