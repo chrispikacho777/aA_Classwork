@@ -16,6 +16,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    # debugger
     @album = Album.new(album_params)
     if @album.save
       redirect_to album_url(@album)
