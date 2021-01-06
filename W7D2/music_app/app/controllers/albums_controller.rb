@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :require_logged_in
+
   def edit
     @album = Album.find(params[:id])
     render :edit
