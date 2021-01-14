@@ -42,7 +42,50 @@ exponent2 = function(base, exp) {
     else {
         let temp = exponent2(base, (exp-1)/2);
         return temp * temp * base;
-    }
-;}
+    };
+};
 
-console.log(exponent2(2,5));
+// console.log(exponent2(2,5));
+
+fibonacci = function(n){
+    if(n === 0){
+        return [0];
+    };
+    if(n === 1){
+        return [1];
+    };
+    if(n===2){
+        return [1,1];
+    };
+    let arr = fibonacci(n-1);
+    arr.push(arr[arr.length-1] + arr[arr.length-2]);
+    return arr;
+};
+
+// console.log(fibonacci(8));
+
+deepDup = function(arr) {
+
+    if(!(arr instanceof Array)){
+        return arr;
+    };
+
+    return arr.map(el => { 
+        return deepDup(el);
+    });
+    // if(arr.length === 0){
+    //     return [];
+    // };
+    // if (arr.length === 1){
+    //     if (arr[0] instanceof Array){
+    //         return deepDup(arr[0]);
+    //     }else{
+    //         return arr[0];
+    //     };
+    // }else{
+    //     return deepDup(arr[0]) + deepDup(arr.slice[1, arr.length]);
+    // };
+    
+};
+
+console.log(deepDup([[1,2], 3, 'a', ['b', 'c']]));
